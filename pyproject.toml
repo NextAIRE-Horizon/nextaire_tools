@@ -1,0 +1,197 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+# ---------------------------------------------------------------------------
+# Project metadata
+# ---------------------------------------------------------------------------
+[project]
+name = "nextaire_tools"
+version = "0.1.0"
+description = "Reproducible preprocessing, feature engineering, Copernicus data extraction, visualization and ML/DL modeling for air-quality time series."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "Valentino Petrić", email = "valentino.petric@lisboncouncil.net" },
+]
+maintainers = [
+    { name = "Valentino Petrić", email = "valentino.petric@lisboncouncil.net" },
+]
+keywords = [
+    "air quality",
+    "preprocessing",
+    "feature engineering",
+    "time series",
+    "machine learning",
+    "deep learning",
+    "ERA5",
+    "CAMS",
+    "Copernicus",
+    "reanalysis",
+    "atmospheric science",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Atmospheric Science",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Typing :: Typed",
+]
+dependencies = [
+    "numpy>=1.24",
+    "pandas>=2.1",
+    "scipy>=1.10",
+    "scikit-learn>=1.4",
+    "matplotlib>=3.7",
+    "seaborn>=0.13",
+    "pyarrow>=14",     # parquet IO
+    "openpyxl>=3.1",   # excel IO
+]
+
+[project.optional-dependencies]
+# Deep-learning models (LSTM / CNN / MLP)
+deep = ["torch>=2.0"]
+# Gradient-boosted trees (XGBoost regressor)
+boost = ["xgboost>=2.0"]
+# Model interpretation (TreeSHAP)
+shap = ["shap>=0.44"]
+# Running the example notebooks in notebooks/
+notebooks = ["jupyterlab>=4", "nbconvert>=7", "ipykernel>=6"]
+# Copernicus reanalysis extraction (ERA5, CAMS, ERA5-Land)
+extract = ["cdsapi>=0.7.2", "xarray>=2024.1", "cfgrib>=0.9.11", "eccodes>=2.30"]
+# Geospatial land-use regression (OSM) features
+geo = ["geopandas>=1.0", "osmnx>=2.0", "shapely>=2.0"]
+# Classical time-series forecasting
+forecast = ["prophet>=1.1"]
+# National-holiday temporal features
+holidays = ["holidays>=0.50"]
+# Documentation site
+docs = [
+    "mkdocs>=1.6",
+    "mkdocs-material>=9.5",
+    "mkdocstrings[python]>=0.26",
+    "mkdocs-gen-files>=0.5",
+    "mkdocs-literate-nav>=0.6",
+    "griffe>=1.0",
+]
+# Development / CI
+dev = [
+    "pytest>=8",
+    "pytest-cov>=5",
+    "ruff>=0.6",
+    "mypy>=1.11",
+    "build>=1.2",
+    "pandas-stubs",
+]
+# Convenience: all runtime extras
+all = [
+    "torch>=2.0",
+    "xgboost>=2.0",
+    "shap>=0.44",
+    "cdsapi>=0.7.2",
+    "xarray>=2024.1",
+    "cfgrib>=0.9.11",
+    "eccodes>=2.30",
+    "geopandas>=1.0",
+    "osmnx>=2.0",
+    "shapely>=2.0",
+    "prophet>=1.1",
+    "holidays>=0.50",
+]
+
+[project.urls]
+Homepage = "https://github.com/NextAIRE-Horizon/nextaire_tools"
+Documentation = "https://nextaire-tools.readthedocs.io"
+Repository = "https://github.com/NextAIRE-Horizon/nextaire_tools"
+Issues = "https://github.com/NextAIRE-Horizon/nextaire_tools/issues"
+Changelog = "https://github.com/NextAIRE-Horizon/nextaire_tools/blob/main/CHANGELOG.md"
+
+[project.scripts]
+nextaire_tools = "nextaire_tools.cli:main"
+
+# ---------------------------------------------------------------------------
+# Hatch build
+# ---------------------------------------------------------------------------
+[tool.hatch.build.targets.wheel]
+packages = ["src/nextaire_tools"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src/nextaire_tools", "tests", "README.md", "LICENSE", "CHANGELOG.md"]
+
+# ---------------------------------------------------------------------------
+# Ruff (lint + format)
+# ---------------------------------------------------------------------------
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = [
+    "E",    # pycodestyle errors
+    "W",    # pycodestyle warnings
+    "F",    # pyflakes
+    "I",    # isort
+    "B",    # flake8-bugbear
+    "UP",   # pyupgrade
+    "C4",   # flake8-comprehensions
+    "SIM",  # flake8-simplify
+    "PD",   # pandas-vet
+    "NPY",  # numpy
+    "RUF",
+]
+ignore = [
+    "B905",    # zip without strict (py310 compat)
+    "RUF022",  # __all__ is grouped logically, not alphabetically
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["B018"]
+"__init__.py" = ["F401"]  # re-exports
+
+[tool.ruff.lint.isort]
+known-first-party = ["nextaire_tools"]
+
+# ---------------------------------------------------------------------------
+# Mypy
+# ---------------------------------------------------------------------------
+[tool.mypy]
+python_version = "3.10"
+warn_unused_configs = true
+ignore_missing_imports = true
+disallow_untyped_defs = false
+check_untyped_defs = true
+warn_redundant_casts = true
+files = ["src/nextaire_tools"]
+
+# ---------------------------------------------------------------------------
+# Pytest
+# ---------------------------------------------------------------------------
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+markers = [
+    "network: tests that require network access (Copernicus / OSM).",
+    "deep: tests that require the optional torch dependency.",
+    "geo: tests that require the optional geopandas/osmnx dependencies.",
+]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::PendingDeprecationWarning",
+]
+
+[tool.coverage.run]
+source = ["nextaire_tools"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true

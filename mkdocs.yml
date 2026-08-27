@@ -1,0 +1,133 @@
+site_name: nextaire_tools
+site_description: >-
+  Reproducible preprocessing, feature engineering, Copernicus data extraction,
+  visualization, and ML/DL modeling for air-quality time series.
+site_author: Valentino Petrić
+repo_url: https://github.com/NextAIRE-Horizon/nextaire_tools
+repo_name: NextAIRE-Horizon/nextaire_tools
+edit_uri: edit/main/docs/
+copyright: Copyright &copy; 2026 Valentino Petrić — MIT License
+
+theme:
+  name: material
+  icon:
+    logo: material/weather-windy
+    repo: fontawesome/brands/github
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.instant
+    - navigation.tracking
+    - navigation.indexes
+    - toc.follow
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - search.suggest
+    - search.highlight
+
+plugins:
+  - search
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          options:
+            docstring_style: numpy
+            show_source: true
+            show_root_heading: true
+            show_root_full_path: false
+            show_symbol_type_heading: true
+            show_symbol_type_toc: true
+            members_order: source
+            separate_signature: true
+            show_signature_annotations: true
+            signature_crossrefs: true
+            merge_init_into_class: true
+            filters:
+              - "!^_"
+            docstring_section_style: table
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets:
+      base_path: ["."]
+      check_paths: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - Home: index.md
+  - Getting started:
+      - Installation: getting-started/installation.md
+      - Quickstart: getting-started/quickstart.md
+      - Key concepts: getting-started/concepts.md
+  - User guide:
+      - Loading data: user-guide/loading-data.md
+      - Missing values: user-guide/missing-values.md
+      - Outliers: user-guide/outliers.md
+      - Temporal features: user-guide/temporal-features.md
+      - Scaling: user-guide/scaling.md
+      - Pipelines: user-guide/pipelines.md
+      - Copernicus extractors: user-guide/extractors.md
+      - Visualization: user-guide/visualization.md
+      - Modeling & cross-validation: user-guide/modeling.md
+      - Deep learning: user-guide/deep-learning.md
+  - Tutorials:
+      - End-to-end workflow: tutorials/end-to-end-workflow.md
+  - Reference:
+      - Reproducing the papers: reference/reproducing-papers.md
+      - Metrics glossary: reference/metrics.md
+      - Copernicus data sources: reference/data-sources.md
+  - API:
+      - Overview: api/index.md
+      - nextaire_tools.io: api/io.md
+      - nextaire_tools.preprocessing: api/preprocessing.md
+      - nextaire_tools.extractors: api/extractors.md
+      - nextaire_tools.viz: api/viz.md
+      - nextaire_tools.models: api/models.md
+      - nextaire_tools.utils & exceptions: api/utils.md
+  - About:
+      - Changelog: about/changelog.md
+      - Contributing: about/contributing.md
+      - Citing nextaire_tools: about/citation.md
+      - License: about/license.md
