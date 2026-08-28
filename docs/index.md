@@ -3,7 +3,17 @@ hide:
   - navigation
 ---
 
+<p align="center">
+  <img src="assets/nextaire_logo2a_transparent.png" alt="nextaire_tools" width="260">
+</p>
+
 # nextaire_tools
+
+<p align="center">
+  <a href="https://nextaire.eu/">Website</a> ·
+  <a href="https://www.linkedin.com/company/project-nextaire-horizon-widera/posts/?feedView=all">LinkedIn</a> ·
+  <a href="https://www.youtube.com/@nextaireproject">YouTube</a>
+</p>
 
 Preprocessing, feature engineering, Copernicus data extraction, visualization,
 and ML/DL modeling for air-quality time series.

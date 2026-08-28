@@ -10,8 +10,9 @@ copyright: Copyright &copy; 2026 Valentino Petrić — MIT License
 
 theme:
   name: material
+  logo: assets/nextaire_logo2a_transparent.png
+  favicon: assets/nextaire_logo_fav.png
   icon:
-    logo: material/weather-windy
     repo: fontawesome/brands/github
   palette:
     - media: "(prefers-color-scheme: light)"
@@ -94,6 +95,18 @@ markdown_extensions:
 
 extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+extra:
+  social:
+    - icon: material/web
+      link: https://nextaire.eu/
+      name: NextAIRE project website
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/project-nextaire-horizon-widera/posts/?feedView=all
+      name: NextAIRE on LinkedIn
+    - icon: fontawesome/brands/youtube
+      link: https://www.youtube.com/@nextaireproject
+      name: NextAIRE on YouTube
 
 nav:
   - Home: index.md
