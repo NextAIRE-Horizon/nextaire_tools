@@ -1,5 +1,8 @@
 # nextaire_tools
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22149642.svg)](https://doi.org/10.5281/zenodo.22149642)
+[![Docs](https://readthedocs.org/projects/nextaire-tools/badge/?version=latest)](https://nextaire-tools.readthedocs.io/en/latest/)
+
 Preprocessing, feature engineering, Copernicus data extraction, visualization,
 and ML/DL modeling for air-quality time series.
 
@@ -222,7 +225,7 @@ jupyter nbconvert --to notebook --execute --inplace notebooks/01_quickstart.ipyn
 
 There is also a plain-script walkthrough in
 [`examples/end_to_end.py`](examples/end_to_end.py) and a prose tutorial in the
-[documentation](https://nextaire-tools.readthedocs.io).
+[documentation](https://nextaire-tools.readthedocs.io/en/latest/).
 
 ## Reproducing the papers
 
@@ -247,7 +250,7 @@ sources.
 ## Documentation
 
 Full documentation — user guide, API reference, and tutorials — lives at
-**[nextaire-tools.readthedocs.io](https://nextaire-tools.readthedocs.io)** and is built from the
+**[nextaire-tools.readthedocs.io](https://nextaire-tools.readthedocs.io/en/latest/)** and is built from the
 Markdown sources in [`docs/`](docs/).
 
 Build it locally:
@@ -276,6 +279,13 @@ paper(s) it is based on:
 > airborne PAHs and heavy metals in PM₁₀ using temporal, spatial, traffic and
 > heating data in explainable machine learning models.* Atmospheric Environment: X,
 > 29, 100413. doi:10.1016/j.aeaoa.2026.100413
+
+You can also cite the software itself:
+
+> Petrić, V. (2026). *nextaire_tools: Air-quality time-series preprocessing,
+> extraction, and ML/DL* [Software]. Zenodo. doi:10.5281/zenodo.22149642
+
+See [`docs/about/citation.md`](docs/about/citation.md) for BibTeX entries.
 
 ## License
 

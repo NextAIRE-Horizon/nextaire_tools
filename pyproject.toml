@@ -108,10 +108,11 @@ all = [
 
 [project.urls]
 Homepage = "https://github.com/NextAIRE-Horizon/nextaire_tools"
-Documentation = "https://nextaire-tools.readthedocs.io"
+Documentation = "https://nextaire-tools.readthedocs.io/en/latest/"
 Repository = "https://github.com/NextAIRE-Horizon/nextaire_tools"
 Issues = "https://github.com/NextAIRE-Horizon/nextaire_tools/issues"
 Changelog = "https://github.com/NextAIRE-Horizon/nextaire_tools/blob/main/CHANGELOG.md"
+"DOI (Zenodo)" = "https://doi.org/10.5281/zenodo.22149642"
 
 [project.scripts]
 nextaire_tools = "nextaire_tools.cli:main"

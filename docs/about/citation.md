@@ -40,14 +40,22 @@ paper(s) the package is built around, and (optionally) the software itself.
 
 ## Software
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22149642.svg)](https://doi.org/10.5281/zenodo.22149642)
+
+> Petrić, V. (2026). *nextaire_tools: Air-quality time-series preprocessing,
+> extraction, and ML/DL* [Software]. Zenodo. doi:10.5281/zenodo.22149642
+
 ```bibtex
 @software{nextaire_tools,
   title  = {nextaire_tools: Air-quality time-series preprocessing, extraction, and ML/DL},
   author = {Petri{\'c}, Valentino},
   year   = {2026},
-  url    = {https://github.com/NextAIRE-Horizon/nextaire_tools}
+  doi    = {10.5281/zenodo.22149642},
+  url    = {https://doi.org/10.5281/zenodo.22149642}
 }
 ```
+
+Full documentation: <https://nextaire-tools.readthedocs.io/en/latest/>.
 
 ## Related work by the author
 
