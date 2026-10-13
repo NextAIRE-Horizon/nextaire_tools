@@ -1,7 +1,8 @@
 # Notebooks
 
 Runnable Jupyter notebooks that exercise `nextaire_tools` on synthetic example data — no
-network, accounts, or downloads required. They double as smoke tests: each is
+network, accounts, or downloads required, except notebook 05, which downloads the pretrained
+Chronos-2 weights once. They double as smoke tests: each is
 committed with its executed outputs and re-runs top to bottom.
 
 | Notebook | What it covers |
@@ -10,12 +11,14 @@ committed with its executed outputs and re-runs top to bottom.
 | [`02_preprocessing_and_features.ipynb`](02_preprocessing_and_features.ipynb) | Every preprocessing step in turn — missing values (incl. iterative), outliers (incl. `rolling_sigma`), temporal, wind, lag, and correlation-filter transformers — then composed into one pipeline. |
 | [`03_reproduce_papers.ipynb`](03_reproduce_papers.ipynb) | Compact interactive versions of the three paper recipes in [`../reproductions/`](../reproductions): RF + metrics (Paper 1), blocked-CV WAPE (Paper 2), NMF + RF + SHAP (Paper 3). |
 | [`04_deep_learning_and_forecasting.ipynb`](04_deep_learning_and_forecasting.ipynb) | PyTorch `MLPRegressor` / `LSTMRegressor` / `CNNRegressor` (`[deep]`), and `ProphetForecaster` / `HybridProphetRegressor` (`[forecast]`). Checks for both optional extras and skips gracefully if either is missing. |
+| [`05_chronos2_zero_shot_forecasting.ipynb`](05_chronos2_zero_shot_forecasting.ipynb) | Zero-shot Chronos-2 forecasts with 90% bands, scored against a seasonal-naive baseline. Checks for `chronos-forecasting` and skips its sections if missing; the first run downloads the weights. |
 
 ## Running
 
 ```bash
-pip install -e ".[all]"        # or a subset; notebooks skip missing optional deps
-jupyter lab                    # then open a notebook, or:
+pip install -e ".[all]"          # or a subset; notebooks skip missing optional deps
+pip install chronos-forecasting  # for notebook 05; downloads its weights on first run
+jupyter lab                      # then open a notebook, or:
 
 # run headless (also how they are verified):
 jupyter nbconvert --to notebook --execute --inplace notebooks/01_quickstart.ipynb

@@ -16,6 +16,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   tour, interactive paper reproductions, and a deep-learning + Prophet forecasting
   tour; each runs on synthetic data and is committed with executed outputs. Install
   with `pip install "nextaire_tools[notebooks]"`.
+- **Zero-shot forecasting notebook**: `notebooks/05_chronos2_zero_shot_forecasting.ipynb`
+  runs the pretrained Chronos-2 model on the synthetic station from notebook 4, with
+  rolling 24-hour forecasts scored against a seasonal-naive baseline. Needs
+  `pip install chronos-forecasting`; the first run downloads the model weights.
 - **Preprocessing**:
   - `OutlierHandler` gains a `rolling_sigma` method — time-local winsorisation on
     a centred rolling window (`window`, `sigma`), for spike removal.
