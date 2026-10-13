@@ -34,3 +34,9 @@ def test_unknown_regressor_raises():
 def test_params_passthrough():
     model = make_regressor("random_forest", n_estimators=7)
     assert model.get_params()["n_estimators"] == 7
+
+
+def test_xgboost_default_random_state():
+    pytest.importorskip("xgboost")
+    model = make_regressor("xgboost")
+    assert model.get_params()["random_state"] == 0

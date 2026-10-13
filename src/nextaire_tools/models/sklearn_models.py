@@ -15,7 +15,7 @@ seed is only injected into estimators whose constructor actually accepts it.
 from __future__ import annotations
 
 from collections.abc import Callable
-from inspect import signature
+from inspect import Parameter, signature
 from typing import Any
 
 from sklearn.base import BaseEstimator
@@ -87,11 +87,20 @@ _RANDOM_STATE_DEFAULTS: frozenset[str] = frozenset(
 
 
 def _accepts(factory: Callable[..., BaseEstimator], param: str) -> bool:
-    """Return whether ``factory``'s constructor accepts a keyword ``param``."""
+    """Return whether ``factory``'s constructor accepts a keyword ``param``.
+
+    A factory that only declares ``**kwargs`` (e.g. :func:`_xgboost_regressor`,
+    which forwards everything to the wrapped estimator) is treated as accepting
+    any keyword, since its own signature can't otherwise reveal what the
+    wrapped constructor supports.
+    """
     try:
-        return param in signature(factory).parameters
+        parameters = signature(factory).parameters
     except (ValueError, TypeError):  # pragma: no cover - builtins without a signature
         return False
+    if param in parameters:
+        return True
+    return any(p.kind is Parameter.VAR_KEYWORD for p in parameters.values())
 
 
 def list_regressors() -> list[str]:
