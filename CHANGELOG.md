@@ -42,6 +42,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   (IQR-normalised).
 - **Optional extras** — `nextaire_tools[boost]` (XGBoost) and `nextaire_tools[shap]` (TreeSHAP).
 
+### Fixed
+
+- `make_regressor("xgboost")` now defaults to `random_state=0` like the other tree
+  models (it was left as `None`).
+
 ## [0.1.0] — 2026-07-05
 
 Initial public release.
