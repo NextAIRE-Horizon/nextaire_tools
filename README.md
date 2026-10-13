@@ -215,7 +215,8 @@ frames = era5.extract_to_frames(
 ## Tutorials & notebooks
 
 Runnable Jupyter notebooks in [`notebooks/`](notebooks/) work on the synthetic
-example data — no network required — and are committed with their executed
+example data (no network required, except notebook 05, which downloads the
+pretrained Chronos-2 weights once) and are committed with their executed
 outputs, so they render on GitHub and re-run top to bottom.
 
 | Notebook | What it covers |
@@ -224,9 +225,10 @@ outputs, so they render on GitHub and re-run top to bottom.
 | [`02_preprocessing_and_features.ipynb`](notebooks/02_preprocessing_and_features.ipynb) | Every preprocessing step in turn, then composed into one pipeline. |
 | [`03_reproduce_papers.ipynb`](notebooks/03_reproduce_papers.ipynb) | Compact interactive versions of the three paper recipes. |
 | [`04_deep_learning_and_forecasting.ipynb`](notebooks/04_deep_learning_and_forecasting.ipynb) | PyTorch MLP/LSTM/CNN regressors and Prophet / hybrid Prophet+RF forecasting. |
+| [`05_chronos2_zero_shot_forecasting.ipynb`](notebooks/05_chronos2_zero_shot_forecasting.ipynb) | Zero-shot Chronos-2 forecasts with 90% bands, scored against a seasonal-naive baseline. |
 
 ```bash
-pip install "nextaire_tools[notebooks]"
+pip install "nextaire_tools[notebooks]" chronos-forecasting
 jupyter lab                              # open a notebook, or run headless:
 jupyter nbconvert --to notebook --execute --inplace notebooks/01_quickstart.ipynb
 ```
