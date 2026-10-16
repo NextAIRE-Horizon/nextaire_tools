@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **Agent skills** — `skills/` directory for plain-language agent skills that let
+  non-programmers run common `nextaire_tools` tasks through an AI agent, with a
+  `README.md` and a `_template/` for new skills.
 - **Paper reproductions** — runnable, offline recipes in `reproductions/` that
   rebuild the methodology of the three studies `nextaire_tools` is based on (Petrić et al.
   2024; Jiménez-Navarro et al. 2024; Račić et al. 2026). See `papers/README.md`.
